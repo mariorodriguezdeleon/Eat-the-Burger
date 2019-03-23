@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/mariorodriguezdeleon/Eat-the-Burger#readme",
   "dependencies": {
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
     "mysql": "^2.16.0"
   }
 }
