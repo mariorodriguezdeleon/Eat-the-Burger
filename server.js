@@ -1,7 +1,7 @@
 // CONSTANT VARIABLES =====================================
 const express = require('express');
-const apiRoutes = require('./routing/apiRoutes');
-const htmlRoutes = require('./routing/htmlRoutes');
+const apiRoutes = require('./routes/api-routes');
+const htmlRoutes = require('./routes/html-routes');
 const exphbs = require("express-handlebars");
 
 const app = express(); //Create express object
@@ -18,7 +18,6 @@ app.use(express.static('public'));
 // Routes to app assets and responses =======================
 app.use('/', htmlRoutes);
 app.use('/api', apiRoutes);
-
 
 // Initialize listening =====================================
 app.listen(PORT, function() {
