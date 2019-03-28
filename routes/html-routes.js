@@ -1,5 +1,5 @@
 const express = require('express');
-const path = require('path');
+
 // const database = require('../database/database');
 
 const route = express.Router();
