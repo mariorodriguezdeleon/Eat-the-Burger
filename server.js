@@ -1,7 +1,5 @@
 // CONSTANT VARIABLES =====================================
 const express = require('express');
-const apiRoutes = require('./routes/api-routes');
-const htmlRoutes = require('./routes/html-routes');
 const exphbs = require("express-handlebars");
 
 const app = express(); //Create express object
@@ -16,10 +14,9 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Routes to app assets and responses =======================
-app.use('/', htmlRoutes);
-app.use('/api', apiRoutes);
+require('./controllers/burgers_contoller')(app);
 
 // Initialize listening =====================================
 app.listen(PORT, function() {
-    console.log('frined-finder is running on ' + PORT);
+    console.log('Eat-the-Burger is running on ' + PORT);
 });
