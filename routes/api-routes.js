@@ -19,7 +19,6 @@ route.put('/put', function(req, res) {
      res.send('Updating Record');
 });
 
-
 // Delete
 route.delete('/delete_burger', function(req, res){
     //Add logic
