@@ -12,15 +12,15 @@ route.post('/api/burgers', function(req, res) {
 
 // Read all data from burgers
 route.get('/', function(req, res) {
-    // burger.selectAll(function(data) {
-    //     let hbsObject = {
-    //         burger: data
-    //     };
-    //     console.log(hbsObject);
+    burger.selectAll(function(data) {
+        let hbsObject = {
+            burger: data
+        };
+        console.log(hbsObject);
         
-    //     // res.render('index', hbsObject);
-    // });
-    res.send('In Root');
+        res.render('index', hbsObject);
+    });
+    // res.send('In Root');
 });
 
 // Update data on burger obj
