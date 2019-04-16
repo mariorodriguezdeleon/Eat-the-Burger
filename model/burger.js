@@ -1,34 +1,31 @@
 const orm = require('../config/orm');
 
-let burger = {
-
-    //TODO: selectAll();
+var burger = {
+    // Display all burgers in the db.
     selectAll: function(cb) {
-        orm.selectAll('burgers', function(res){
+        orm.selectAll("burgers", function(res) {
             cb(res);
         });
     },
-
-    //TODO: insertOne();
-    insertOne: function(col, val, cb) {
-        orientation.insertOne('burgers', col, val, function(res) {
+    // Add a new burger to the db.
+    insertOne: function(cols, vals, cb) {
+        orm.insertOne("burgers", cols, vals, function(res) {
             cb(res);
         });
     },
-
-    //TODO: updateOne();
+    // Change the devoured status to true.
     updateOne: function(objColVals, condition, cb) {
-        orm.updateOne('burgers', objColVals, condition, function(res) {
+        orm.updateOne("burgers", objColVals, condition, function(res) {
             cb(res);
-        })
+        });
     },
-
-    //TODO: deleteOne();
+    // Delete a burger from the db.
     deleteOne: function(condition, cb) {
-        orm.deleteOne('burgers', condition, function(res) {
+        orm.deleteOne("burgers", condition, function(res) {
             cb(res);
         });
     }
 };
 
+// Export at the end of the burger.js file.
 module.exports = burger;

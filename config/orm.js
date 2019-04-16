@@ -1,10 +1,10 @@
 const connection = require('../config/connection');
 
-function printQuestionsMarks(num) {
+function printQuestionMarks(num) {
     let arr = [];
 
     for(let i = 0; i < num; i++) {
-        arr.push('?');
+        arr.push("?");
     }
     return arr.toString();
 }
@@ -37,20 +37,22 @@ let orm = {
         });
     },
 
-    insertOne: function(table, col, vals, cb) {
-        let queryStr = 'INSERT INTO ' + table;
-        queryStr += ' (';
-        queryStr += col.toString();
-        queryStr += ') ';
-        queryStr += 'VALUES (';
-        queryStr += printQuestionsMarks.toString();
-        queryStr += ') ';
+    insertOne: function(table, cols, vals, cb) {
+        var queryString = "INSERT INTO " + table;
+        queryString += " (";
+        queryString += cols.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += printQuestionMarks(vals.length);
+        queryString += ") ";
 
-        console.log(queryStr);
+        console.log(queryString);
 
-        connection.query(queryStr, function(error, res) {
-            if(error) throw error;
-            cb(res);
+        connection.query(queryString, vals, function(err, result) {
+            if (err) {
+                throw err
+            }
+            cb(result);
         });
     },
 
@@ -79,6 +81,7 @@ let orm = {
             cb(res);
         });
     }
+
 }
 
 module.exports = orm;

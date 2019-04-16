@@ -2,7 +2,7 @@
 $(function() {
 
     // Add a new burger.
-    $("#addburger").on("click", function(event) {
+    $(".create-form").on("submit", function(event) {
         console.log('in addburger');
         event.preventDefault();
 

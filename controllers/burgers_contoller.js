@@ -7,7 +7,7 @@ let route = express.Router();
 route.post('/api/burgers', function(req, res) {
     burger.insertOne(['burger_name', 'devoured'], [req.body.burger_name, req.body.devoured], function(res) {
         res.json({ id: res.insertId });
-    })
+    });
 });
 
 // Read all data from burgers
@@ -16,8 +16,7 @@ route.get('/', function(req, res) {
         let hbsObject = {
             burger: data
         };
-        console.log(hbsObject);
-        
+        // console.log(hbsObject);
         res.render('index', hbsObject);
     });
     // res.send('In Root');
