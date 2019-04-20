@@ -53,5 +53,5 @@ $(function() {
             url: "/api/burgers/" + id
         }).then(location.reload());
     });
-
-})
+    
+});

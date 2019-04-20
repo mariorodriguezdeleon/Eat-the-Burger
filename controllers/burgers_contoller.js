@@ -5,8 +5,10 @@ let route = express.Router();
 
 // Create new burger obj
 route.post('/api/burgers', function(req, res) {
-    burger.insertOne(['burger_name', 'devoured'], [req.body.burger_name, req.body.devoured], function(res) {
-        res.json({ id: res.insertId });
+    console.log(req.body.burger_name + " " + req.body.devoured);
+    burger.insertOne(['burger_name', 'devoured'], [req.body.burger_name, req.body.devoured], function(response) {
+        console.log(response);
+        // response.json({ id: res.insertId });
     });
 });
 
@@ -19,7 +21,7 @@ route.get('/', function(req, res) {
         // console.log(hbsObject);
         res.render('index', hbsObject);
     });
-    // res.send('In Root');
+    // res.send('In Root'); 
 });
 
 // Update data on burger obj
