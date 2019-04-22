@@ -49,11 +49,20 @@ let orm = {
         });
     },
 
-    updateOne: function(objColVals, condition, cb) {
-        orm.updateOne('burgers', objColVals, condition, function(res) {
-          cb(res);
+    updateOne: function(table, objColVal, condition, cb) {
+        let queryStr = 'UPDATE ' + table;
+        queryStr += ' SET';
+        queryStr += objToSqlSyntax(objColVal);
+        queryStr += ' WHERE ';
+        queryStr += condition;
+
+        console.log(queryStr);
+
+        connection.query(queryStr, function(error, res) {
+            if(error) throw error;
+            cb(res);
         });
-      }
+    }
 }
 
 module.exports = orm;
