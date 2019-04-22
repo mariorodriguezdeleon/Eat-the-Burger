@@ -1,5 +1,5 @@
 .jumbotron {
-    background-image: url("/assets/img/background.jpg");
+    /* background-image: url("/assets/img/background.jpg"); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -10,12 +10,32 @@
     font-family: 'Gloria Hallelujah', cursive;
 }
 
+.btn {
+    width: 50px;
+    height: 30px;
+    padding-top: 3px;
+}
+
+.fas {
+    display: inline;
+}
+
+.burgerAvailable {
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.burgerEaten {
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
 #newburger {
     border-radius: 5px;
 }
 
 #color-override {
-    color: #fff;
+    color: #000;
 }
 
 #lefthead {

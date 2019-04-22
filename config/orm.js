@@ -9,21 +9,14 @@ function printQuestionMarks(num) {
     return arr.toString();
 }
 
-function objToSqlSyntax(obj) {
-    let arr = [];
+function objToSqlSyntax(ob) {
+	var arr = [];
 
-    for (let key in obj) {
-        let val = obj[key];
+	for (var key in ob) {
+		arr.push(key + "=" + ob[key]);
+	}
 
-        if(Object.hasOwnProperty.call(obj, key)) {
-
-            if(typeof val === 'string' && val.indexOf(' ') >+ 0) {
-                val = "'" + val + "'";
-            }
-            arr.push(key + '=' + val);
-        }
-    }
-    return arr.toString();
+	return arr.toString();
 }
 
 let orm = {
@@ -56,32 +49,11 @@ let orm = {
         });
     },
 
-    updateOne: function(table, objColVal, condition, cb) {
-        let queryStr = 'UPDATE ' + table;
-        queryStr += ' SET';
-        queryStr += objToSqlSyntax(objColVal);
-        queryStr += ' WHERE ';
-        queryStr += condition;
-
-        console.log(queryStr);
-
-        connection.query(queryStr, function(error, res) {
-            if(error) throw error;
-            cb(res);
+    updateOne: function(objColVals, condition, cb) {
+        orm.updateOne('burgers', objColVals, condition, function(res) {
+          cb(res);
         });
-    },
-
-    deleteOne: function(table, condition, cb) {
-        let queryStr = 'DELETE FROM ' + table;
-        queryStr += ' WHERE ';
-        queryStr += condition;
-
-        connection.query(queryStr, function(error, res) {
-            if(error) throw error;
-            cb(res);
-        });
-    }
-
+      }
 }
 
 module.exports = orm;
